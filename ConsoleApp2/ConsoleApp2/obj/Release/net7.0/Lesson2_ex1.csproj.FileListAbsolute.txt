@@ -1,0 +1,15 @@
+D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\Lesson2_ex1.exe
+D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\Lesson2_ex1.deps.json
+D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\Lesson2_ex1.runtimeconfig.json
+D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\Lesson2_ex1.dll
+D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\Lesson2_ex1.pdb
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.csproj.AssemblyReference.cache
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.AssemblyInfoInputs.cache
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.AssemblyInfo.cs
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.csproj.CoreCompileInputs.cache
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.dll
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\refint\Lesson2_ex1.dll
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.pdb
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\Lesson2_ex1.genruntimeconfig.cache
+D:\C#\ConsoleApp2\ConsoleApp2\obj\Release\net7.0\ref\Lesson2_ex1.dll

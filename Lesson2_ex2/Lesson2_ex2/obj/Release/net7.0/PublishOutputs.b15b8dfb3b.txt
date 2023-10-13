@@ -1,0 +1,5 @@
+D:\C#\Lesson2_ex2\Lesson2_ex2\bin\Release\net7.0\publish\Lesson2_ex2.exe
+D:\C#\Lesson2_ex2\Lesson2_ex2\bin\Release\net7.0\publish\Lesson2_ex2.dll
+D:\C#\Lesson2_ex2\Lesson2_ex2\bin\Release\net7.0\publish\Lesson2_ex2.deps.json
+D:\C#\Lesson2_ex2\Lesson2_ex2\bin\Release\net7.0\publish\Lesson2_ex2.runtimeconfig.json
+D:\C#\Lesson2_ex2\Lesson2_ex2\bin\Release\net7.0\publish\Lesson2_ex2.pdb
