@@ -107,19 +107,19 @@ Console.WriteLine();
 
 if (evenUpperCount > oddUpperCount)
 {
-    Console.WriteLine("Even arrays have more upper's symbols.");
+    Console.WriteLine("Even arrays have more upper's symbols."); // Test
 }
 else if (evenUpperCount < oddUpperCount)
 {
-    Console.WriteLine("Odd arrays have more upper's symbols.");
+    Console.WriteLine("Odd arrays have more upper's symbols."); // Test
 }
 else if (evenUpperCount == 0 && oddUpperCount == 0)
 {
-    Console.WriteLine("Arrays dont have upper's symbols.");
+    Console.WriteLine("Arrays dont have upper's symbols."); // Test
 }
 else
 {
-    Console.WriteLine("Both arrays have same count upper's symbols.");
+    Console.WriteLine("Both arrays have same count upper's symbols."); // Test
 }
 
 char ChangeToChar(int number)
