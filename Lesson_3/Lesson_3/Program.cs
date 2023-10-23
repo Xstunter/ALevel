@@ -10,7 +10,7 @@ Console.WriteLine(Func("nice", "niece"));
 Console.WriteLine(Func("test", "tent"));
 Console.WriteLine(Func("form", "from"));
 Console.WriteLine(Func("o", "odd"));
-
+Console.WriteLine(Func("nice", "node"));
 string Func(string S, string T)
 {
     if (S != T)
