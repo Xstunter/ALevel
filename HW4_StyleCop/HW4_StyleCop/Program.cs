@@ -61,20 +61,24 @@ char[] evenSymbolArray = new char[evenCountArray];
 
 char[] oddSymbolArray = new char[numbersArray.Length - evenCountArray];
 
-if (evenCountArray > numbersArray.Length - evenCountArray)
-{
-    Console.WriteLine("Even array have more symbols.");
-}
-else
-{
-    Console.WriteLine("Odd array have more symbols.");
-}
+char[] upperSymbol = { 'a', 'e', 'i', 'd', 'h', 'j' };
+
+int evenUpperCount = 0, oddUpperCount = 0;
 
 Console.WriteLine("Even array:");
 
 for (int i = 0; i < evenSymbolArray.Length; i++)
 {
     evenSymbolArray[i] = ChangeToChar(evenNumbersArray[i]);
+
+    for (int j = 0; j < upperSymbol.Length; j++)
+    {
+        if (upperSymbol[j] == evenSymbolArray[i])
+        {
+            evenSymbolArray[i] = char.ToUpper(evenSymbolArray[i]);
+            evenUpperCount++;
+        }
+    }
 
     Console.Write(evenSymbolArray[i] + " ");
 }
@@ -87,12 +91,40 @@ for (int i = 0; i < oddSymbolArray.Length; i++)
 {
     oddSymbolArray[i] = ChangeToChar(oddNumbersArray[i]);
 
+    for (int j = 0; j < upperSymbol.Length; j++)
+    {
+        if (upperSymbol[j] == oddSymbolArray[i])
+        {
+            oddSymbolArray[i] = char.ToUpper(oddSymbolArray[i]);
+            oddUpperCount++;
+        }
+    }
+
     Console.Write(oddSymbolArray[i] + " ");
+}
+
+Console.WriteLine();
+
+if (evenUpperCount > oddUpperCount)
+{
+    Console.WriteLine("Even arrays have more upper's symbols.");
+}
+else if (evenUpperCount < oddUpperCount)
+{
+    Console.WriteLine("Odd arrays have more upper's symbols.");
+}
+else if (evenUpperCount == 0 && oddUpperCount == 0)
+{
+    Console.WriteLine("Arrays dont have upper's symbols.");
+}
+else
+{
+    Console.WriteLine("Both arrays have same count upper's symbols.");
 }
 
 char ChangeToChar(int number)
 {
-    return (char)(64 + number);
+    return (char)(96 + number);
 }
 
 bool EvenNumber(int number)
