@@ -77,6 +77,7 @@ for (int i = 0; i < evenSymbolArray.Length; i++)
         {
             evenSymbolArray[i] = char.ToUpper(evenSymbolArray[i]);
             evenUpperCount++;
+            break;
         }
     }
 
@@ -97,6 +98,7 @@ for (int i = 0; i < oddSymbolArray.Length; i++)
         {
             oddSymbolArray[i] = char.ToUpper(oddSymbolArray[i]);
             oddUpperCount++;
+            break;
         }
     }
 
@@ -107,19 +109,19 @@ Console.WriteLine();
 
 if (evenUpperCount > oddUpperCount)
 {
-    Console.WriteLine("Even arrays have more upper's symbols."); // Test
+    Console.WriteLine($"Even arrays have more upper's symbols. Even:{evenUpperCount} > Odd:{oddUpperCount}");
 }
 else if (evenUpperCount < oddUpperCount)
 {
-    Console.WriteLine("Odd arrays have more upper's symbols."); // Test
+    Console.WriteLine($"Odd arrays have more upper's symbols. Even:{evenUpperCount} < Odd:{oddUpperCount}");
 }
 else if (evenUpperCount == 0 && oddUpperCount == 0)
 {
-    Console.WriteLine("Arrays dont have upper's symbols."); // Test
+    Console.WriteLine("Arrays dont have upper's symbols.");
 }
 else
 {
-    Console.WriteLine("Both arrays have same count upper's symbols."); // Test
+    Console.WriteLine("Both arrays have same count upper's symbols.");
 }
 
 char ChangeToChar(int number)
