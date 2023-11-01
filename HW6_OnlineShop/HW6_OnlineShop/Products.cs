@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace HW6_OnlineShop
 {
-    internal class Products
+    public class Products
     {
         public static string[] products =
         {

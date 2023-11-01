@@ -1,10 +1,15 @@
-﻿namespace HW6_OnlineShop
-{
-    internal class Cart
-    {
-        public List<string> clientProducts = new List<string>();
+﻿using HW6_OnlineShop.Models;
 
-        public List<double> priceProduct = new List<double>();
+namespace HW6_OnlineShop
+{
+    public class Cart
+    {
+        public Order CurrentOrder { get; set; }
+
+        public Cart()
+        {
+            CurrentOrder = new Order();
+        }
         public void GetProduct()
         {
             Products dish = new Products();
@@ -25,36 +30,34 @@
                 {
                     Console.WriteLine($"Enter product what do you want in 1 to {Products.products.Length}:");
 
-                    int product = int.Parse(Console.ReadLine());
+                    int index = int.Parse(Console.ReadLine()) - 1;
 
-                    clientProducts.Add(dish[product - 1]);
+                    Product selectedProducts = new Product(dish[index], dish.price[index]);
 
-                    priceProduct.Add(dish.price[product - 1]);
+                    CurrentOrder.Products.Add(selectedProducts);
+
+                    CurrentOrder.TotalPrice += selectedProducts.Price;
                 }
 
-                dish.ShowProduct(clientProducts);
+                dish.ShowProduct(CurrentOrder.Products.Select(x=>x.Name).ToList());
 
                 Console.WriteLine();
 
-                Console.WriteLine($"Total price: {priceProduct.Sum()}грн.");
+                Console.WriteLine($"Total price: {CurrentOrder.TotalPrice}грн.");
 
                 Console.WriteLine("Confirm your order. Y or N.");
 
                 if (Console.ReadLine() == "Y")
                 {
-                    Random random = new Random();
-                    int orderID = random.Next(int.MinValue + int.MaxValue, int.MaxValue);
                     confirm = true;
-                    Console.WriteLine($"Your order confirm! OrderID:{orderID}");
+                    Console.WriteLine($"Your order confirm! OrderID:{CurrentOrder.Id}");
                 }
                 else
                 { 
-                    clientProducts.Clear();
-                    priceProduct.Clear();
+                    CurrentOrder.Products.Clear();
+                    CurrentOrder.TotalPrice = 0;
                     Console.Clear();
-                }
-
-               
+                }            
             }
             while (!confirm);
         }
