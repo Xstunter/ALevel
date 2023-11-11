@@ -10,7 +10,6 @@ namespace HW10_ElectricAppliances.Repositories
         private readonly List<ElectricalModel> _mockElectricalDevices = new List<ElectricalModel>();
         public List<string> AddElectricalDevices(List<ElectricalModel> divices)
         {
-            var entityDevices = new List<ElectricalModel>();
             var ids = new List<string>();
 
             foreach (var item in divices)
@@ -24,7 +23,6 @@ namespace HW10_ElectricAppliances.Repositories
                     Toggle = item.Toggle,
                 };
                 ids.Add(electricalDevice.Id.ToString());
-                entityDevices.Add(electricalDevice);
                 _mockElectricalDevices.Add(electricalDevice);
             }
             return ids;
