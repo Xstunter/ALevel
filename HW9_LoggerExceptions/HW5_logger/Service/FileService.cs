@@ -19,7 +19,7 @@ namespace HW9_LoggerExceptions.Service
             string logs = _logger.GetLogs();
 
             string logName = DateTime.Now.ToString("MM_dd_yyyy_hh_mm_ss");
-            string filePath = Path.Combine(@"D:\C#\ALevel\HW9_LoggerExceptions\LogFiles", $"{logName}.txt");
+            string filePath = Path.Combine($"{logFilePath}", $"{logName}.txt");
 
             File.WriteAllText(filePath, logs);
 
