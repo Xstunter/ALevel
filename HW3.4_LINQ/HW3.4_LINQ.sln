@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW3.4_Event", "HW3.4_LINQ\HW3.4_Event.csproj", "{82B6D913-F365-49D7-BAB5-7859219B192E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW3.4_LINQ", "HW3.4_LINQ_2\HW3.4_LINQ.csproj", "{10055527-490F-4153-B288-3184ABA7C056}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82B6D913-F365-49D7-BAB5-7859219B192E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B6D913-F365-49D7-BAB5-7859219B192E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B6D913-F365-49D7-BAB5-7859219B192E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B6D913-F365-49D7-BAB5-7859219B192E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10055527-490F-4153-B288-3184ABA7C056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10055527-490F-4153-B288-3184ABA7C056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10055527-490F-4153-B288-3184ABA7C056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10055527-490F-4153-B288-3184ABA7C056}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C4BBD62-9D45-4DBA-B83D-2626A0C0A45D}
+	EndGlobalSection
+EndGlobal
