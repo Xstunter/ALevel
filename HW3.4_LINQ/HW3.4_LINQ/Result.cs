@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Metrics;
 
 namespace HW3._4_LINQ
 {
@@ -17,6 +16,9 @@ namespace HW3._4_LINQ
         {
             Console.WriteLine($"Result Division: {calculate.Division()}");
         }
-        
+        public void SumAllMethods(object o, Calculate calculate)
+        {
+            Console.WriteLine($"Result SumAllMethods: {calculate._result}");
+        }
     }
 }

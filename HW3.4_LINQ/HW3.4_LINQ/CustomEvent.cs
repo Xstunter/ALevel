@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace HW3._4_LINQ
 {

@@ -11,12 +11,14 @@ class Program
         customEvent.calculateEvent += result.SumEvent;
         customEvent.calculateEvent += result.MultiplyEvent;
         customEvent.calculateEvent += result.DivisionEvent;
+        customEvent.calculateEvent += result.SumAllMethods;
 
-        TryCatch(customEvent.CalculateEvent, 10, 0);
+        TryCatch(customEvent.CalculateEvent, 10, 5);
 
         customEvent.calculateEvent -= result.DivisionEvent;
         customEvent.calculateEvent -= result.MultiplyEvent;
         customEvent.calculateEvent -= result.SumEvent;
+        customEvent.calculateEvent -= result.SumAllMethods;
 
         TryCatch(customEvent.CalculateEvent, 10, 5);
     }
