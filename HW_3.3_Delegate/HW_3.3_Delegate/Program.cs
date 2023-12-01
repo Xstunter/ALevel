@@ -7,6 +7,13 @@ class Program
     {
         Class1 class1 = new Class1();
         Class2 class2 = new Class2();
+
+        class2.StartCalc += (o, data) =>
+        {
+            Console.WriteLine("Start calc");
+        };
+
+
         DelegateResult result = class2.Calc(class1.Multiply,10,5);
         ShowDelegate showResult = Show;
         showResult(result(3));
