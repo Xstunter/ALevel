@@ -13,7 +13,7 @@ namespace HW3._4_LINQ
             _x = x; 
             _y = y;
         }
-        public double Sum() 
+        public int Sum() 
         {
             _result += _x + _y;
             return _x + _y; 
