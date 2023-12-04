@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-class Program
+internal sealed class Program
 {
     public static async Task Main(string[] args)
     {
@@ -10,27 +10,20 @@ class Program
         var result = await task;
         Console.WriteLine($"Result: {result}");
     }
-    
-    public static async Task<string> HelloAsync() 
-    { 
-        using (var helloFile = new StreamReader("Hello.txt"))
-        {
-            return await helloFile.ReadLineAsync();
-        }
-    }
-    public static async Task<string> WorldAsync()
+
+    public static async Task<string> ReadFileContentAsync(string path)
     {
-        using (var worldFile = new StreamReader("World.txt"))
+        using (var fileContent = new StreamReader(path))
         {
-            return await worldFile.ReadLineAsync();
+            return await fileContent.ReadLineAsync();
         }
     }
     public static async Task<string> ConcatAsync()
     {
         try
         {
-            var task1 = HelloAsync();
-            var task2 = WorldAsync();
+            var task1 = ReadFileContentAsync("Hello.txt");
+            var task2 = ReadFileContentAsync("World.txt");
 
             await Task.WhenAll(task1, task2);
 
