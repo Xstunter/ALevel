@@ -1,5 +1,0 @@
-D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\publish\Lesson2_ex1.exe
-D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\publish\Lesson2_ex1.dll
-D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\publish\Lesson2_ex1.deps.json
-D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\publish\Lesson2_ex1.runtimeconfig.json
-D:\C#\ConsoleApp2\ConsoleApp2\bin\Release\net7.0\publish\Lesson2_ex1.pdb
