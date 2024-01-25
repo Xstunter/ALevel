@@ -1,0 +1,10 @@
+table{
+    overflow-x:auto;
+}
+.blue{
+    color:blue;
+}
+.nav-item.active {
+    background-color: #007bff; 
+    color: #fff; 
+  }
