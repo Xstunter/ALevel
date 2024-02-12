@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources</title>
+    <link rel="icon" href="./pngtree-html-file-document-icon-png-image_4175819.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="./index.html">Users</a>
+                </li>
+            </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="./resources.html">Resources</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+
+      <table class="table table-striped table-dark" id="box">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Year</th>
+                <th scope="col">Color</th>
+                <th scope="col">Phantone value</th>
+            </tr>
+        </thead>
+    </table>
+    <table class="table table-striped table-dark" id="support">
+      <thead>
+          <tr>
+              <th scope="col">Url</th>
+              <th scope="col">Text</th>
+          </tr>
+      </thead>
+    </table>
+
+    <div class="d-flex justify-content-center">
+        <ul class="pagination" >
+            <li onclick="clickOnPaginationResources('1')" class="page-item"><a class="page-link" href="#">1</a></li>
+            <li onclick="clickOnPaginationResources('2')" class="page-item"><a class="page-link" href="#">2</a></li>
+            <li onclick="clickOnPaginationResources('3')" class="page-item"><a class="page-link" href="#">3</a></li>
+            <li onclick="clickOnPaginationResources('4')" class="page-item"><a class="page-link" href="#">4</a></li>
+            <li onclick="clickOnPaginationResources('5')" class="page-item"><a class="page-link" href="#">5</a></li>
+            <li onclick="clickOnPaginationResources('6')" class="page-item"><a class="page-link" href="#">6</a></li>
+        </ul>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Input Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+              <form class="needs-validation" novalidate>
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom01">Text</label>
+                      <input type="text" class="form-control" id="validationCustom01" required>
+                      <div class="invalid-feedback">
+                          Please input text.
+                        </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Confirm</button>
+              </form>
+          </td>
+        </tr>
+      </tbody>
+    </table> 
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+  </script>
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="./scripts/main.js"></script>
+</body>
+</html>
