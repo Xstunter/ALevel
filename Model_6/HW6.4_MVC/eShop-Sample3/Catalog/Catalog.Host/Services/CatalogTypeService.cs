@@ -24,12 +24,12 @@ namespace Catalog.Host.Services
             return ExecuteSafeAsync(() => _catalogTypeRepository.Add(type));
         }
 
-        public Task Delete(int id)
+        public Task<bool> Delete(int id)
         {
             return ExecuteSafeAsync(() => _catalogTypeRepository.Delete(id));
         }
 
-        public Task Update(int id, string type)
+        public Task<bool> Update(int id, string type)
         {
             return ExecuteSafeAsync(() => _catalogTypeRepository.Update(id, type));
         }

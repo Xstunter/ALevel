@@ -7,7 +7,7 @@ namespace Catalog.Host.Repositories.Interfaces
     {
         Task<PaginatedItems<CatalogType>> GetByPageAsync(int pageIndex, int pageSize);
         Task<int?> Add(string type);
-        Task Update(int id, string type);
-        Task Delete(int id);
+        Task<bool> Update(int id, string type);
+        Task<bool> Delete(int id);
     }
 }

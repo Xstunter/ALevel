@@ -30,7 +30,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
         _mapper = mapper;
     }
 
-    public async Task<PaginatedItemByBrandResponse<CatalogItemDto>> GetCatalogByBrandItemAsync(int pageSize, int pageIndex, string brand)
+    public async Task<PaginatedItemByBrandResponse<CatalogItemDto>> GetCatalogByBrandItemAsync(int pageIndex, int pageSize, string brand)
     {
         return await ExecuteSafeAsync(async () =>
         {
@@ -46,7 +46,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
         });
     }
 
-    public async Task<PaginatedItemByIdResponse<CatalogItemDto>> GetCatalogByIdItemAsync(int pageSize, int pageIndex, int id)
+    public async Task<PaginatedItemByIdResponse<CatalogItemDto>> GetCatalogByIdItemAsync(int pageIndex, int pageSize, int id)
     {
         return await ExecuteSafeAsync(async () =>
         {
@@ -62,7 +62,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
         });
     }
 
-    public async Task<PaginatedItemByTypeResponse<CatalogItemDto>> GetCatalogByTypeItemAsync(int pageSize, int pageIndex, string type)
+    public async Task<PaginatedItemByTypeResponse<CatalogItemDto>> GetCatalogByTypeItemAsync(int pageIndex, int pageSize, string type)
     {
         return await ExecuteSafeAsync(async () =>
         {
@@ -78,7 +78,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
         });
     }
 
-    public async Task<PaginatedItemsResponse<CatalogBrandDto>?> GetCatalogBrandsAsync(int pageSize, int pageIndex)
+    public async Task<PaginatedItemsResponse<CatalogBrandDto>?> GetCatalogBrandsAsync(int pageIndex, int pageSize)
     {
         return await ExecuteSafeAsync(async () =>
         {
@@ -98,7 +98,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
         });
     }
 
-    public async Task<PaginatedItemsResponse<CatalogItemDto>?> GetCatalogItemsAsync(int pageSize, int pageIndex)
+    public async Task<PaginatedItemsResponse<CatalogItemDto>?> GetCatalogItemsAsync(int pageIndex, int pageSize)
     {
         return await ExecuteSafeAsync(async () =>
         {
@@ -118,7 +118,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
         });
     }
 
-    public async Task<PaginatedItemsResponse<CatalogTypeDto>?> GetCatalogTypesAsync(int pageSize, int pageIndex)
+    public async Task<PaginatedItemsResponse<CatalogTypeDto>?> GetCatalogTypesAsync(int pageIndex, int pageSize)
     {
         return await ExecuteSafeAsync(async () =>
         {

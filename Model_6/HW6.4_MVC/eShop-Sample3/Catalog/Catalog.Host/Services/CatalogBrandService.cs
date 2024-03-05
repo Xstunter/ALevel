@@ -23,12 +23,12 @@ namespace Catalog.Host.Services
             return ExecuteSafeAsync(() => _catalogBrandRepository.Add(brand));
         }
 
-        public Task Delete(int id)
+        public Task<bool> Delete(int id)
         {
             return ExecuteSafeAsync(() => _catalogBrandRepository.Delete(id));
         }
 
-        public Task Update(int id, string brand)
+        public Task<bool> Update(int id, string brand)
         {
             return ExecuteSafeAsync(() => _catalogBrandRepository.Update(id, brand));
         }

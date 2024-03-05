@@ -73,15 +73,15 @@ namespace Catalog.UnitTests.Services
 
         public async Task DeleteBrandAsync_Success()
         {
+            bool testResult = true;
             int testId = 1;
 
             _catalogBrandRepository.Setup(s => s.Delete(
-                It.IsAny<int>())).Returns(Task.CompletedTask);
+                It.IsAny<int>())).ReturnsAsync(testResult);
 
-            Func<Task> deleteMethod = async () =>
-                await _catalogBrandService.Delete(testId);
+            var result = await _catalogBrandService.Delete(testId);
 
-            await deleteMethod.Should().NotThrowAsync();
+            result.Should().Be(testResult);
 
         }
 
@@ -89,20 +89,21 @@ namespace Catalog.UnitTests.Services
 
         public async Task DeleteBrandAsync_Failed()
         {
+            bool testResult = false;
             int testId = 1000;
 
             _catalogBrandRepository.Setup(s => s.Delete(
-                It.IsAny<int>())).ThrowsAsync(new Exception("Delete failed"));
+                It.IsAny<int>())).ReturnsAsync(testResult);
 
-            Func<Task> deleteMethod = async () =>
-                await _catalogBrandService.Delete(testId);
+            var result = await _catalogBrandService.Delete(testId);
 
-            await deleteMethod.Should().ThrowAsync<Exception>().WithMessage("Delete failed");
+            result.Should().Be(testResult);
         }
 
         [Fact]
         public async Task UpdateBrandAsync_Success()
         {
+            bool testResult = true;
             int testId = 1;
 
             var _newTestBrand = new CatalogBrand()
@@ -112,12 +113,11 @@ namespace Catalog.UnitTests.Services
 
             _catalogBrandRepository.Setup(s => s.Update(
                 It.IsAny<int>(),
-                It.IsAny<string>())).Returns(Task.CompletedTask);
+                It.IsAny<string>())).ReturnsAsync(testResult);
 
-            Func<Task> updateMethod = async () =>
-                await _catalogBrandService.Update(testId, _newTestBrand.Brand);
+            var result = await _catalogBrandService.Update(testId, _newTestBrand.Brand);
 
-            await updateMethod.Should().NotThrowAsync();
+            result.Should().Be(testResult);
 
         }
 
@@ -125,6 +125,7 @@ namespace Catalog.UnitTests.Services
 
         public async Task UpdateBrandAsync_Failed()
         {
+            bool testResult = false;
             int testId = 1000;
 
             var _newTestBrand = new CatalogBrand()
@@ -134,12 +135,11 @@ namespace Catalog.UnitTests.Services
 
             _catalogBrandRepository.Setup(s => s.Update(
                 It.IsAny<int>(),
-                It.IsAny<string>())).ThrowsAsync(new Exception("Update failed"));
+                It.IsAny<string>())).ReturnsAsync(testResult);
 
-            Func<Task> updateMethod = async () =>
-                await _catalogBrandService.Update(testId, _newTestBrand.Brand);
+            var result = await _catalogBrandService.Update(testId, _newTestBrand.Brand);
 
-            await updateMethod.Should().ThrowAsync<Exception>().WithMessage("Update failed");
+            result.Should().Be(testResult);
         }
     }
 }

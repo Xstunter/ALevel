@@ -25,18 +25,27 @@ namespace Catalog.Host.Repositories
             return item.Entity.Id;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            var item = _dbContext.CatalogBrands.FirstOrDefault(t => t.Id == id);
-
-            if (item == null)
+            try
             {
-                throw new ArgumentNullException($"Not found user with id:{id}!");
+                var item = _dbContext.CatalogBrands.FirstOrDefault(t => t.Id == id);
+
+                if (item == null)
+                {
+                    throw new ArgumentNullException($"Not found user with id:{id}!");
+                }
+
+                _dbContext.CatalogBrands.Remove(item);
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
             }
-
-            _dbContext.CatalogBrands.Remove(item);
-
-            await _dbContext.SaveChangesAsync();
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<PaginatedItems<CatalogBrand>> GetByPageAsync(int pageIndex, int pageSize)
@@ -53,18 +62,27 @@ namespace Catalog.Host.Repositories
             return new PaginatedItems<CatalogBrand>() { TotalCount = totalItems, Data = itemsOnPage };
         }
 
-        public async Task Update(int id, string brand)
+        public async Task<bool> Update(int id, string brand)
         {
-            var item = _dbContext.CatalogBrands.FirstOrDefault(t => t.Id == id);
-
-            if (item == null)
+            try
             {
-                throw new ArgumentNullException($"Not found user with id:{id}!");
+                var item = _dbContext.CatalogBrands.FirstOrDefault(t => t.Id == id);
+
+                if (item == null)
+                {
+                    throw new ArgumentNullException($"Not found user with id:{id}!");
+                }
+
+                item.Brand = brand;
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
             }
-
-            item.Brand = brand;
-
-            await _dbContext.SaveChangesAsync();
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

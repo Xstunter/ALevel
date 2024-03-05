@@ -91,37 +91,37 @@ namespace Catalog.UnitTests.Services
 
         public async Task DeleteItemAsync_Success()
         {
+            bool testResult = true;
             int testId = 1;
 
             _catalogItemRepository.Setup(s => s.Delete(
-                It.IsAny<int>())).Returns(Task.CompletedTask);
+                It.IsAny<int>())).ReturnsAsync(testResult);
 
-            Func<Task> deleteMethod = async () =>
-                await _catalogItemService.Delete(testId);
+            var result = await _catalogItemService.Delete(testId);
 
-            await deleteMethod.Should().NotThrowAsync();
-
+            result.Should().Be(testResult);
         }
 
         [Fact]
 
         public async Task DeleteItemAsync_Failed()
         {
+            bool testResult = false;
             int testId = 1000;
 
             _catalogItemRepository.Setup(s => s.Delete(
-                It.IsAny<int>())).ThrowsAsync(new Exception("Delete failed"));
+                It.IsAny<int>())).ReturnsAsync(testResult);
 
-            Func<Task> deleteMethod = async () =>
-                await _catalogItemService.Delete(testId);
+            var result = await _catalogItemService.Delete(testId);
 
-            await deleteMethod.Should().ThrowAsync<Exception>().WithMessage("Delete failed");
+            result.Should().Be(testResult);
         }
 
         [Fact]
 
         public async Task UpdateItemAsync_Success()
         {
+            bool testResult = true;
             int testId = 1;
 
             var _newTestItem = new CatalogItem()
@@ -143,22 +143,20 @@ namespace Catalog.UnitTests.Services
                 It.IsAny<int>(),
                 It.IsAny<int>(),
                 It.IsAny<int>(),
-                It.IsAny<string>())).Returns(Task.CompletedTask);
+                It.IsAny<string>())).ReturnsAsync(testResult);
 
-            Func<Task> updateMethod = async () =>
-                await _catalogItemService.Update(testId, _newTestItem.Name, _newTestItem.Description,
+            var result = await _catalogItemService.Update(testId, _newTestItem.Name, _newTestItem.Description,
                                                  _newTestItem.Price, _newTestItem.AvailableStock,
                                                  _newTestItem.CatalogBrandId, _newTestItem.CatalogTypeId,
                                                  _newTestItem.PictureFileName);
-
-            await updateMethod.Should().NotThrowAsync();
-
+            result.Should().Be(testResult);
         }
 
         [Fact]
 
         public async Task UpdateItemAsync_Failed()
         {
+            bool testResult = false;
             int testId = 1000;
 
             var _newTestItem = new CatalogItem()
@@ -180,15 +178,14 @@ namespace Catalog.UnitTests.Services
                 It.IsAny<int>(),
                 It.IsAny<int>(),
                 It.IsAny<int>(),
-                It.IsAny<string>())).ThrowsAsync(new Exception("Update failed"));
+                It.IsAny<string>())).ReturnsAsync(testResult);
 
-            Func<Task> updateMethod = async () =>
-                await _catalogItemService.Update(testId, _newTestItem.Name, _newTestItem.Description,
+            var result = await _catalogItemService.Update(testId, _newTestItem.Name, _newTestItem.Description,
                                                  _newTestItem.Price, _newTestItem.AvailableStock,
                                                  _newTestItem.CatalogBrandId, _newTestItem.CatalogTypeId,
                                                  _newTestItem.PictureFileName);
 
-            await updateMethod.Should().ThrowAsync<Exception>().WithMessage("Update failed");
+            result.Should().Be(testResult);
         }
     }
 }

@@ -71,36 +71,36 @@ namespace Catalog.UnitTests.Services
         [Fact]
         public async Task DeleteTypeAsync_Success()
         {
+            bool testResult = true;
             int testId = 1;
 
             _catalogTypeRepository.Setup(s => s.Delete(
-                It.IsAny<int>())).Returns(Task.CompletedTask);
+                It.IsAny<int>())).ReturnsAsync(testResult);
 
-            Func<Task> deleteMethod = async () =>
-                await _catalogTypeService.Delete(testId);
+            var result = await _catalogTypeService.Delete(testId);
 
-            await deleteMethod.Should().NotThrowAsync();
-
+            result.Should().Be(testResult);
         }
 
         [Fact]
 
         public async Task DeleteTypeAsync_Failed()
         {
+            bool testResult = false;
             int testId = 1000;
 
             _catalogTypeRepository.Setup(s => s.Delete(
-                It.IsAny<int>())).ThrowsAsync(new Exception("Delete failed"));
+                It.IsAny<int>())).ReturnsAsync(testResult);
 
-            Func<Task> deleteMethod = async () =>
-                await _catalogTypeService.Delete(testId);
+            var result = await _catalogTypeService.Delete(testId);
 
-            await deleteMethod.Should().ThrowAsync<Exception>().WithMessage("Delete failed");
+            result.Should().Be(testResult);
         }
 
         [Fact]
         public async Task UpdateTypeAsync_Success()
         {
+            bool testResult = true;
             int testId = 1;
 
             var _newTestType = new CatalogType()
@@ -110,12 +110,11 @@ namespace Catalog.UnitTests.Services
 
             _catalogTypeRepository.Setup(s => s.Update(
                 It.IsAny<int>(),
-                It.IsAny<string>())).Returns(Task.CompletedTask);
+                It.IsAny<string>())).ReturnsAsync(testResult);
 
-            Func<Task> updateMethod = async () =>
-                await _catalogTypeService.Update(testId, _newTestType.Type);
+            var result = await _catalogTypeService.Update(testId, _newTestType.Type);
 
-            await updateMethod.Should().NotThrowAsync();
+            result.Should().Be(testResult);
 
         }
 
@@ -123,6 +122,7 @@ namespace Catalog.UnitTests.Services
 
         public async Task UpdateTypedAsync_Failed()
         {
+            bool testResult = false;
             int testId = 1000;
 
             var _newTestType = new CatalogType()
@@ -132,12 +132,11 @@ namespace Catalog.UnitTests.Services
 
             _catalogTypeRepository.Setup(s => s.Update(
                 It.IsAny<int>(),
-                It.IsAny<string>())).ThrowsAsync(new Exception("Update failed"));
+                It.IsAny<string>())).ReturnsAsync(testResult);
 
-            Func<Task> updateMethod = async () =>
-                await _catalogTypeService.Update(testId, _newTestType.Type);
+            var result = await _catalogTypeService.Update(testId, _newTestType.Type);
 
-            await updateMethod.Should().ThrowAsync<Exception>().WithMessage("Update failed");
+            result.Should().Be(testResult);
         }
     }
 }

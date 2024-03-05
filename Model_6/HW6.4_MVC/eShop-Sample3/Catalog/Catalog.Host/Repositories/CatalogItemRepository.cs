@@ -52,41 +52,59 @@ public class CatalogItemRepository : ICatalogItemRepository
         return item.Entity.Id;
     }
 
-    public async Task Delete(int id)
+    public async Task<bool> Delete(int id)
     {
-        var item = _dbContext.CatalogItems.FirstOrDefault(t => t.Id == id);
-
-        if (item == null)
+        try
         {
-            throw new ArgumentNullException($"Not found user with id:{id}!");
+            var item = _dbContext.CatalogItems.FirstOrDefault(t => t.Id == id);
+
+            if (item == null)
+            {
+                throw new ArgumentNullException($"Not found user with id:{id}!");
+            }
+
+            _dbContext.CatalogItems.Remove(item);
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
         }
-
-        _dbContext.CatalogItems.Remove(item);
-
-        await _dbContext.SaveChangesAsync();
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
-    public async Task Update(int id, string name, string description, decimal price, int availableStock, int catalogBrandId, int catalogTypeId, string pictureFileName)
+    public async Task<bool> Update(int id, string name, string description, decimal price, int availableStock, int catalogBrandId, int catalogTypeId, string pictureFileName)
     {
-        var item = _dbContext.CatalogItems.FirstOrDefault(t => t.Id == id);
-
-        if (item == null)
+        try
         {
-            throw new ArgumentNullException($"Not found user with id:{id}!");
+            var item = _dbContext.CatalogItems.FirstOrDefault(t => t.Id == id);
+
+            if (item == null)
+            {
+                throw new ArgumentNullException($"Not found user with id:{id}!");
+            }
+
+            item.Name = name;
+            item.Description = description;
+            item.Price = price;
+            item.AvailableStock = availableStock;
+            item.CatalogBrandId = catalogBrandId;
+            item.CatalogTypeId = catalogTypeId;
+            item.PictureFileName = pictureFileName;
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
         }
-
-        item.Name = name;
-        item.Description = description;
-        item.Price = price;
-        item.AvailableStock = availableStock;
-        item.CatalogBrandId = catalogBrandId;
-        item.CatalogTypeId = catalogTypeId;
-        item.PictureFileName = pictureFileName;
-
-        await _dbContext.SaveChangesAsync();
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
-    public async Task<PaginatedItems<CatalogItem>> GetByIdAsync(int pageSize, int pageIndex, int id)
+    public async Task<PaginatedItems<CatalogItem>> GetByIdAsync(int pageIndex, int pageSize, int id)
     {
         var totalItems = await _dbContext.CatalogItems
             .Where(i => i.Id == id)
@@ -104,7 +122,7 @@ public class CatalogItemRepository : ICatalogItemRepository
         return new PaginatedItems<CatalogItem>() { TotalCount = totalItems, Data = itemsOnPage };
     }
 
-    public async Task<PaginatedItems<CatalogItem>> GetByBrandAsync(int pageSize, int pageIndex, string brand)
+    public async Task<PaginatedItems<CatalogItem>> GetByBrandAsync(int pageIndex, int pageSize, string brand)
     {
         var totalItems = await _dbContext.CatalogItems
             .Where(i => i.CatalogBrand.Brand == brand)
@@ -122,7 +140,7 @@ public class CatalogItemRepository : ICatalogItemRepository
         return new PaginatedItems<CatalogItem>() { TotalCount = totalItems, Data = itemsOnPage };
     }
 
-    public async Task<PaginatedItems<CatalogItem>> GetByTypeAsync(int pageSize, int pageIndex, string type)
+    public async Task<PaginatedItems<CatalogItem>> GetByTypeAsync(int pageIndex, int pageSize, string type)
     {
         var totalItems = await _dbContext.CatalogItems
             .Where(i => i.CatalogType.Type == type)

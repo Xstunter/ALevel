@@ -7,10 +7,10 @@ namespace Catalog.Host.Services.Interfaces;
 
 public interface ICatalogService
 {
-    Task<PaginatedItemsResponse<CatalogItemDto>?> GetCatalogItemsAsync(int pageSize, int pageIndex);
-    Task<PaginatedItemsResponse<CatalogBrandDto>?> GetCatalogBrandsAsync(int pageSize, int pageIndex);
-    Task<PaginatedItemsResponse<CatalogTypeDto>?> GetCatalogTypesAsync(int pageSize, int pageIndex);
-    Task<PaginatedItemByIdResponse<CatalogItemDto>> GetCatalogByIdItemAsync(int pageSize, int pageIndex, int id);
-    Task<PaginatedItemByBrandResponse<CatalogItemDto>> GetCatalogByBrandItemAsync(int pageSize, int pageIndex, string brand);
-    Task<PaginatedItemByTypeResponse<CatalogItemDto>> GetCatalogByTypeItemAsync(int pageSize, int pageIndex, string type);
+    Task<PaginatedItemsResponse<CatalogItemDto>?> GetCatalogItemsAsync(int pageIndex, int pageSize);
+    Task<PaginatedItemsResponse<CatalogBrandDto>?> GetCatalogBrandsAsync(int pageIndex, int pageSize);
+    Task<PaginatedItemsResponse<CatalogTypeDto>?> GetCatalogTypesAsync(int pageIndex, int pageSize);
+    Task<PaginatedItemByIdResponse<CatalogItemDto>> GetCatalogByIdItemAsync(int pageIndex, int pageSize, int id);
+    Task<PaginatedItemByBrandResponse<CatalogItemDto>> GetCatalogByBrandItemAsync(int pageIndex, int pageSize, string brand);
+    Task<PaginatedItemByTypeResponse<CatalogItemDto>> GetCatalogByTypeItemAsync(int pageIndex, int pageSize, string type);
 }

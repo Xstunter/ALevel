@@ -25,18 +25,27 @@ namespace Catalog.Host.Repositories
             return item.Entity.Id;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            var item = _dbContext.CatalogTypes.FirstOrDefault(t => t.Id == id);
-
-            if (item == null)
+            try
             {
-                throw new ArgumentNullException($"Not found user with id:{id}!");
+                var item = _dbContext.CatalogTypes.FirstOrDefault(t => t.Id == id);
+
+                if (item == null)
+                {
+                    throw new ArgumentNullException($"Not found user with id:{id}!");
+                }
+
+                _dbContext.CatalogTypes.Remove(item);
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
             }
-
-            _dbContext.CatalogTypes.Remove(item);
-
-            await _dbContext.SaveChangesAsync();
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public async Task<PaginatedItems<CatalogType>> GetByPageAsync(int pageIndex, int pageSize)
@@ -53,18 +62,27 @@ namespace Catalog.Host.Repositories
             return new PaginatedItems<CatalogType>() { TotalCount = totalItems, Data = itemsOnPage };
         }
 
-        public async Task Update(int id, string type)
+        public async Task<bool> Update(int id, string type)
         {
-            var item = _dbContext.CatalogTypes.FirstOrDefault(t => t.Id == id);
-
-            if (item == null)
+            try
             {
-                throw new ArgumentNullException($"Not found user with id:{id}!");
+                var item = _dbContext.CatalogTypes.FirstOrDefault(t => t.Id == id);
+
+                if (item == null)
+                {
+                    throw new ArgumentNullException($"Not found user with id:{id}!");
+                }
+
+                item.Type = type;
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
             }
-
-            item.Type = type;
-
-            await _dbContext.SaveChangesAsync();
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
